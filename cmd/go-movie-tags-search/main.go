@@ -5,9 +5,9 @@ import (
 	"log"
 	"os"
 
-	"go-movie-tags-search/internal/config"
-	"go-movie-tags-search/internal/db"
-	"go-movie-tags-search/internal/display"
+	"github.com/pymk/go-movie-tags-search/internal/config"
+	"github.com/pymk/go-movie-tags-search/internal/db"
+	"github.com/pymk/go-movie-tags-search/internal/display"
 )
 
 func main() {

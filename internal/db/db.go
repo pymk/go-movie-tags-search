@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"go-movie-tags-search/internal/models"
+	"github.com/pymk/go-movie-tags-search/internal/models"
 
 	_ "github.com/marcboeker/go-duckdb"
 )

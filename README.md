@@ -11,12 +11,15 @@ Initially, everything was in the `main.go` file, but I split it based on [this](
 The `movies.duckdb` dataset should be created first (see Database section below).
 
 ```sh
+cd go-movie-tags-search/cmd/go-movie-tags-search/main.go
+
 # Display all available tags
 go run . -tags
 go run . -tags -limit=20
 
 # Display movies with tags of interest
 go run . -search=sci-fi
+go run . -search=sci-fi,comedy
 go run . -search=sci-fi,comedy -limit=20
 ```
 

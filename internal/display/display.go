@@ -2,7 +2,8 @@ package display
 
 import (
 	"fmt"
-	"go-movie-tags-search/internal/models"
+
+	"github.com/pymk/go-movie-tags-search/internal/models"
 )
 
 func Tags(tags []models.Tag) {
