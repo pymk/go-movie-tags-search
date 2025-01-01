@@ -8,6 +8,8 @@ Initially, everything was in the `main.go` file, but I split it based on [this](
 
 ## Usage
 
+The `movies.duckdb` dataset should be created first (see Database section below).
+
 ```sh
 # Display all available tags
 go run . -tags
