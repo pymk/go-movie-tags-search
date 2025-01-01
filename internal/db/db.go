@@ -16,12 +16,13 @@ func Connect(dbPath string) (*sql.DB, error) {
 
 func GetTopTags(db *sql.DB, limit int) ([]models.Tag, error) {
 	query := fmt.Sprintf(`
-   SELECT 		tag, COUNT(tag) AS count
-   FROM 		tags
-   GROUP BY ALL
-   ORDER BY 	count DESC
-   LIMIT 		%d;
-   `, limit)
+		SELECT 		tag, COUNT(tag) AS count
+		FROM 		tags
+		GROUP BY ALL
+		ORDER BY 	count DESC
+		LIMIT 		%d
+		;
+		`, limit)
 
 	rows, err := db.Query(query)
 	if err != nil {
