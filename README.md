@@ -18,16 +18,7 @@ go run . -search=sci-fi
 go run . -search=sci-fi,comedy -limit=20
 ```
 
-## Dataset
-
-The `movies.duckdb` was created using the datasets from [here](https://grouplens.org/datasets/movielens/):
-
-```sql
-CREATE TABLE movies (movieId int64, title varchar, genres varchar); copy movies from 'movies.csv';
-CREATE TABLE links (movieId int64, imdbId varchar, tmdbId int64); COPY links FROM 'links.csv';
-CREATE TABLE tags (userId int64, movieId int64, tag varchar, "timestamp" int64); copy tags from 'tags.csv';
-CREATE TABLE ratings (userId int64, movieId int64, rating double, "timestamp" int64); copy ratings from 'ratings.csv';
-```
+## Datasets
 
 The program's `search` command uses the "tags" and "movies" tables:
 
@@ -55,11 +46,11 @@ The `tags` command uses the "tags" table:
 
 ```
 > duckdb movies.duckdb "
-SELECT    tag, COUNT(tag) AS count
-FROM      tags
-GROUP BY  tag
-ORDER BY  count DESC
-LIMIT     20
+SELECT       tag, COUNT(tag) AS count
+FROM         tags
+GROUP BY ALL
+ORDER BY     count DESC
+LIMIT        20
 ;
 "
 ┌────────────────────┬───────┐
@@ -92,3 +83,12 @@ LIMIT     20
 ```
 
 Note that there are duckdb-specific commands in these queries.
+
+The `movies.duckdb` was created using the datasets from [here](https://grouplens.org/datasets/movielens/):
+
+```sql
+CREATE TABLE movies (movieId int64, title varchar, genres varchar); copy movies from 'movies.csv';
+CREATE TABLE links (movieId int64, imdbId varchar, tmdbId int64); COPY links FROM 'links.csv';
+CREATE TABLE tags (userId int64, movieId int64, tag varchar, "timestamp" int64); copy tags from 'tags.csv';
+CREATE TABLE ratings (userId int64, movieId int64, rating double, "timestamp" int64); copy ratings from 'ratings.csv';
+```
