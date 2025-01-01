@@ -47,6 +47,11 @@ func GetTopTags(db *sql.DB, limit int) ([]models.Tag, error) {
 
 func SearchMovies(db *sql.DB, tags []string) ([]models.Movie, error) {
 	conditions := make([]string, len(tags))
+
+	// TODO: use args with prepared statements in
+	// the PIVOT clause to prevent SQL injection.
+	// The strings.Join() function takes a slice (not []interface)
+	// so I'd need to convert it to a slice first.
 	args := make([]interface{}, len(tags))
 
 	for i, t := range tags {
